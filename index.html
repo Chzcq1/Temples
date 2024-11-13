@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temples in Nakhon Ratchasima</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <!-- Sidebar Navigation -->
+    <nav>
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#video"><i class="fas fa-video"></i> Video</a>
+        <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
+        <a href="#map"><i class="fas fa-map-marker-alt"></i> Map</a>
+        <a href="#members"><i class="fas fa-users"></i> Members</a>
+      
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h5>Temples in Nakhon Ratchasima</h5>
+        </header>
+
+        <!-- Home Section -->
+        <div class="container" id="home">
+            <section class="content">
+                <h2>Home</h2>
+                <p>Information about temples in Nakhon Ratchasima province...</p>
+            </section>
+        </div>
+
+        <!-- Video Section -->
+        <div class="container" id="video" style="display: none;">
+            <section class="content">
+                <h2>Introduction Video</h2>
+                <video controls width="100%">
+                    <source src="video.mp4" type="video/mp4">
+                    Your browser does not support the video element.
+                </video>
+            </section>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="container" id="gallery" style="display: none;">
+            <section class="content">
+                <h2>Gallery</h2>
+                <div class="gallery-slider">
+                    <div class="slide active" style="background-image: url('https://img5.pic.in.th/file/secure-sv1/IMG_1402e9d62ce52ee71208.jpeg');"></div>
+                    <div class="slide" style="background-image: url('https://img5.pic.in.th/file/secure-sv1/IMG_14002338f15ce6b65004.jpeg');"></div>
+                    <div class="slide" style="background-image: url('https://img5.pic.in.th/file/secure-sv1/IMG_140139f1ce61a6505bff.jpeg');"></div>
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Members Section -->
+        <div class="container" id="members" style="display: none;">
+            <section class="content">
+                <h2>Members and Presentation</h2>
+                <div class="class-info">
+                    M.6 , Academic Year 2024
+                </div>
+                <div class="team-list">
+                    <div class="member">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Sarawut Saelim</strong><span>ID 10</span></p>
+                    </div>
+                    <div class="member">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Andaman Miphayung</strong><span>ID 11</span></p>
+                    </div>
+                    <div class="member">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Chanoknan Phungphrai</strong><span>ID 12</span></p>
+                    </div>
+                    <div class="member">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Praewa Rungsawang</strong><span>ID 21</span></p>
+                    </div>
+                    <div class="member">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Walwisa Nilsiri</strong><span>ID 22</span></p>
+                    </div>
+                    <div class="member">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Watcharaporn Sukonant</strong><span>ID 23</span></p>
+                    </div>
+                </div>
+                <p class="school-info">Yothin Nukun School, Nakhon Ratchasima</p>
+                <p class="presentation-info">Presented to Teacher Suchada</p>
+            </section>
+        </div>
+
+        <!-- Map Section -->
+        <div class="container" id="map" style="display: none;">
+            <section class="content">
+                <h2>Map - Salalai Temples, Korat</h2>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7863153681835!2d102.04232081483415!3d14.984543607778212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3122590d95c7cd59%3A0x303d6b385bce3c8!2z4Liq4Li54LmM4Lih4Liq4Lih4LmA4LiM!5e0!3m2!1sth!2sth!4v1699216954262!5m2!1sth!2sth"
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 Temples in Nakhon Ratchasima. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+
+        // ฟังก์ชันเปิด/ปิดเมนู
+        function toggleMenu() {
+            const nav = document.querySelector("nav");
+            const mainContent = document.querySelector(".main-content");
+            nav.classList.toggle("show");
+            mainContent.classList.toggle("shifted");
+        }
+
+        // JavaScript สำหรับการเปลี่ยนเนื้อหาของหน้า
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // ซ่อนทุกเนื้อหาก่อน
+                document.querySelectorAll('.container').forEach(container => {
+                    container.classList.remove('show');
+                });
+
+                // แสดงเนื้อหาที่คลิก
+                const sectionId = this.getAttribute('href').substring(1);
+                const section = document.getElementById(sectionId);
+                section.classList.add('show');
+            });
+        });
+
+        // แสดงหน้า Home เป็นหน้าเริ่มต้น
+        document.getElementById('home').classList.add('show');
+        // JavaScript สำหรับการเปลี่ยนเนื้อหา
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.container').forEach(container => {
+                    container.style.display = 'none';
+                    container.style.opacity = '0';
+                    container.style.transform = 'translateY(20px)';
+                });
+                const sectionId = this.getAttribute('href').substring(1);
+                const section = document.getElementById(sectionId);
+                section.style.display = 'block';
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 50);
+            });
+        });
+        document.getElementById('home').style.display = 'block';
+
+        // Gallery Slider
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll(".gallery-slider .slide");
+            if (index >= slides.length) currentSlide = 0;
+            else if (index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === currentSlide ? '1' : '0';
+            });
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showSlide(currentSlide);
+            document.querySelector('.prev').addEventListener('click', () => moveSlide(-1));
+            document.querySelector('.next').addEventListener('click', () => moveSlide(1));
+        });
+
+        
+    </script>
+</body>
+</html>
